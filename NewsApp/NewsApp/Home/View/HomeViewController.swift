@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        HomeViewModel().getHomeNews(urlString: "https://newsapi.org/v2/everything") { artigos in
+        HomeViewModel().getHomeNews(urlString: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=b1fcfcc3f3e841aebabb50e8cf9cd681") { artigos in
             print("\(artigos)")
         }
     }

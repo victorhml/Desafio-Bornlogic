@@ -34,7 +34,6 @@ class HomeViewModel {
                     completion(resp.articles)
                 }
             } catch {
-                
                 print("\(error.localizedDescription)")
             }
         }
