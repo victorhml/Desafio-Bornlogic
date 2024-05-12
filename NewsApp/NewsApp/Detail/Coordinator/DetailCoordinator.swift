@@ -16,7 +16,7 @@ class DetailCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = DetailCoordinator()
-        viewController.navigationController.pushViewController(viewController, animated: true)
+        let viewController = DetailViewController()
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
