@@ -28,8 +28,6 @@ class HomeViewModel {
             do {
                 let decoder = JSONDecoder()
                 let resp = try decoder.decode(HomeModel.self, from: data)
-                print("Artigos localizados")
-                print(resp)
                 DispatchQueue.main.async {
                     completion(resp.articles)
                 }

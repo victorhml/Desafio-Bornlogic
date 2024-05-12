@@ -19,6 +19,9 @@
 		D4E84B402BF01CAD000ABE92 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B3F2BF01CAD000ABE92 /* HomeViewController.swift */; };
 		D4E84B442BF0272F000ABE92 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B432BF0272F000ABE92 /* HomeModel.swift */; };
 		D4E84B492BF02E07000ABE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B482BF02E07000ABE92 /* HomeViewModel.swift */; };
+		D4E84B4B2BF03E00000ABE92 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4A2BF03E00000ABE92 /* DetailCoordinator.swift */; };
+		D4E84B4D2BF03E68000ABE92 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4C2BF03E68000ABE92 /* DetailViewController.swift */; };
+		D4E84B4F2BF03EB4000ABE92 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4E2BF03EB4000ABE92 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		D4E84B3F2BF01CAD000ABE92 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D4E84B432BF0272F000ABE92 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D4E84B482BF02E07000ABE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D4E84B4A2BF03E00000ABE92 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		D4E84B4C2BF03E68000ABE92 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D4E84B4E2BF03EB4000ABE92 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D4E84B392BF01AEB000ABE92 /* Coordinator */,
-				D4E84B422BF01CC1000ABE92 /* Model */,
+				D4E84B502BF03F53000ABE92 /* Model */,
 				D4E84B3A2BF01AF3000ABE92 /* View */,
 				D4E84B3B2BF01AF7000ABE92 /* ViewModel */,
 			);
@@ -181,6 +187,7 @@
 		D4E84B392BF01AEB000ABE92 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				D4E84B4A2BF03E00000ABE92 /* DetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 		D4E84B3A2BF01AF3000ABE92 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D4E84B4C2BF03E68000ABE92 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 		D4E84B3B2BF01AF7000ABE92 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D4E84B4E2BF03EB4000ABE92 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -217,7 +226,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D4E84B422BF01CC1000ABE92 /* Model */ = {
+		D4E84B502BF03F53000ABE92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -354,7 +363,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E84B4D2BF03E68000ABE92 /* DetailViewController.swift in Sources */,
 				D4E84B402BF01CAD000ABE92 /* HomeViewController.swift in Sources */,
+				D4E84B4B2BF03E00000ABE92 /* DetailCoordinator.swift in Sources */,
+				D4E84B4F2BF03EB4000ABE92 /* DetailViewModel.swift in Sources */,
 				D4E84B332BF018E1000ABE92 /* Coordinator.swift in Sources */,
 				D4E84B492BF02E07000ABE92 /* HomeViewModel.swift in Sources */,
 				D4E84B442BF0272F000ABE92 /* HomeModel.swift in Sources */,
