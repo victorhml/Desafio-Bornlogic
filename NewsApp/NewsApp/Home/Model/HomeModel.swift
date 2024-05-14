@@ -10,12 +10,12 @@ import Foundation
 struct HomeModel: Codable {
 //    var status: String
 //    var totalResults: Int
-    var articles: [ArticlesModel]
+    var articles: [ArticleModel]
 //    var code: String?
 //    var message: String?
 }
 
-struct ArticlesModel: Codable {
+struct ArticleModel: Codable {
 //    var source: SourceModel
     var author: String?
     var title: String?

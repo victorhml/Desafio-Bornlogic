@@ -6,12 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel {
-    
-//    let detailCoordinator = DetailCoordinator(navigationController: <#UINavigationController#>)
-    
-    func getHomeNews(urlString: String, completion: @escaping ([ArticlesModel]) -> Void) {
+        
+    func getHomeNews(urlString: String, completion: @escaping ([ArticleModel]) -> Void) {
         
         guard let url =  URL(string: urlString) else {
             return
@@ -40,7 +39,9 @@ class HomeViewModel {
         task.resume()
     }
     
-    func goToDetails() {
-//        detailCoordinator?.start()
+    func goToDetails(navigationController: UINavigationController, article: ArticleModel) {
+        let coord = HomeCoordinator(navigationController: navigationController)
+        coord.article = article
+        coord.goToDetails()
     }
 }

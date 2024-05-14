@@ -9,6 +9,7 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
     
+    var article: ArticleModel?
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -20,5 +21,9 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    
+    func goToDetails() {
+        let coordinator = DetailCoordinator(navigationController: navigationController)
+        coordinator.article = article
+        coordinator.start()
+    }
 }

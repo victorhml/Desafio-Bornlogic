@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     let viewModel = HomeViewModel()
-    var articles: [ArticlesModel]?
+    var articles: [ArticleModel]?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.goToDetails()
+        viewModel.goToDetails(navigationController: self.navigationController ?? UINavigationController(), article: articles![indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

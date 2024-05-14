@@ -9,6 +9,9 @@ import UIKit
 
 class DetailCoordinator: Coordinator {
     
+    var article: ArticleModel?
+    var viewModel: DetailViewModel?
+    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -17,6 +20,7 @@ class DetailCoordinator: Coordinator {
     
     func start() {
         let viewController = DetailViewController()
+        viewController.article = article
         navigationController.pushViewController(viewController, animated: true)
     }
 }
