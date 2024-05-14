@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HomeCell")
+        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -43,9 +43,42 @@ class HomeViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+//    func loadImage(urlString: String) -> UIImage? {
+//    }
+    
+//    func loadImage(urlString: String) -> UIImage? {
+//        guard let url = URL(string: urlString) else {
+//            return nil
+//        }
+//        
+//        if let data = try? Data(contentsOf: url) {
+//            if let image = UIImage(data: data) {
+//                return image
+//            }
+//        }
+////        DispatchQueue.global().async { [weak self] in
+////            if let data = try? Data(contentsOf: url) {
+////                if let image = UIImage(data: data) {
+////                    DispatchQueue.main.async {
+////                        self?.image = image
+////                    }
+////                }
+////            }
+////        }
+//        return nil
+//    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.goToDetails()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 216
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,10 +89,30 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-        cell.textLabel?.text = articles?[indexPath.row].title ?? ""
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
+        cell.newsImageView.load(urlString: articles?[indexPath.row].urlToImage ?? "")
+        cell.titleLabel.text = articles?[indexPath.row].title ?? ""
+        cell.authorLabel.text = articles?[indexPath.row].author ?? ""
+        cell.descriptionLabel.text = articles?[indexPath.row].description ?? ""
         return cell
     }
     
-    
+}
+
+extension UIImageView {
+    func load(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            self.image = UIImage(systemName: "questionmark.square")
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

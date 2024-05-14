@@ -8,25 +8,25 @@
 import Foundation
 
 struct HomeModel: Codable {
-    var status: String
-    var totalResults: Int
+//    var status: String
+//    var totalResults: Int
     var articles: [ArticlesModel]
-    var code: String?
-    var message: String?
+//    var code: String?
+//    var message: String?
 }
 
 struct ArticlesModel: Codable {
-    var source: SourceModel
+//    var source: SourceModel
     var author: String?
     var title: String?
     var description: String?
-    var url: String?
+//    var url: String?
     var urlToImage: String?
     var publishedAt: String?
     var content: String?
 }
 
-struct SourceModel: Codable {
-    var id: String?
-    var name: String?
-}
+//struct SourceModel: Codable {
+//    var id: String?
+//    var name: String?
+//}
