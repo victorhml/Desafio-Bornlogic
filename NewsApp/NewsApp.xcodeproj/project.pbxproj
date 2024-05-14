@@ -22,6 +22,7 @@
 		D4E84B4B2BF03E00000ABE92 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4A2BF03E00000ABE92 /* DetailCoordinator.swift */; };
 		D4E84B4D2BF03E68000ABE92 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4C2BF03E68000ABE92 /* DetailViewController.swift */; };
 		D4E84B4F2BF03EB4000ABE92 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B4E2BF03EB4000ABE92 /* DetailViewModel.swift */; };
+		D4E84B522BF05693000ABE92 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B512BF05693000ABE92 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		D4E84B4A2BF03E00000ABE92 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		D4E84B4C2BF03E68000ABE92 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D4E84B4E2BF03EB4000ABE92 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		D4E84B512BF05693000ABE92 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				D4E84B3F2BF01CAD000ABE92 /* HomeViewController.swift */,
+				D4E84B512BF05693000ABE92 /* HomeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				D4E84B4B2BF03E00000ABE92 /* DetailCoordinator.swift in Sources */,
 				D4E84B4F2BF03EB4000ABE92 /* DetailViewModel.swift in Sources */,
 				D4E84B332BF018E1000ABE92 /* Coordinator.swift in Sources */,
+				D4E84B522BF05693000ABE92 /* HomeTableViewCell.swift in Sources */,
 				D4E84B492BF02E07000ABE92 /* HomeViewModel.swift in Sources */,
 				D4E84B442BF0272F000ABE92 /* HomeModel.swift in Sources */,
 				D4E84B3E2BF01BAB000ABE92 /* HomeCoordinator.swift in Sources */,

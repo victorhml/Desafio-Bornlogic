@@ -9,6 +9,8 @@ import Foundation
 
 class HomeViewModel {
     
+//    let detailCoordinator = DetailCoordinator(navigationController: <#UINavigationController#>)
+    
     func getHomeNews(urlString: String, completion: @escaping ([ArticlesModel]) -> Void) {
         
         guard let url =  URL(string: urlString) else {
@@ -36,5 +38,9 @@ class HomeViewModel {
             }
         }
         task.resume()
+    }
+    
+    func goToDetails() {
+//        detailCoordinator?.start()
     }
 }
