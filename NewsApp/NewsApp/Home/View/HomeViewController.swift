@@ -43,31 +43,6 @@ class HomeViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-//    func loadImage(urlString: String) -> UIImage? {
-//    }
-    
-//    func loadImage(urlString: String) -> UIImage? {
-//        guard let url = URL(string: urlString) else {
-//            return nil
-//        }
-//        
-//        if let data = try? Data(contentsOf: url) {
-//            if let image = UIImage(data: data) {
-//                return image
-//            }
-//        }
-////        DispatchQueue.global().async { [weak self] in
-////            if let data = try? Data(contentsOf: url) {
-////                if let image = UIImage(data: data) {
-////                    DispatchQueue.main.async {
-////                        self?.image = image
-////                    }
-////                }
-////            }
-////        }
-//        return nil
-//    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -77,7 +52,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 216
+        return 316
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,5 +89,16 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension String {
+    func changeDateFormat() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let resultString = dateFormatter.string(from: date!)
+        return resultString
     }
 }

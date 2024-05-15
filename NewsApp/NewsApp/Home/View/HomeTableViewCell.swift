@@ -12,7 +12,7 @@ class HomeTableViewCell: UITableViewCell {
     lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -21,7 +21,7 @@ class HomeTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .black
         label.font = UIFont(name: "Helvetica-Bold", size: 16)
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -37,7 +37,7 @@ class HomeTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .black
-        label.numberOfLines = 4
+        label.numberOfLines = 0
         return label
     }()
     

@@ -30,21 +30,21 @@ class DetailViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private lazy var authorLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
+//    private lazy var authorLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.numberOfLines = 0
+//        return label
+//    }()
     
     private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -59,14 +59,12 @@ class DetailViewController: UIViewController {
         setupScrollView()
         setupContentView()
         setupDetailImageView()
-        setupTitleLabel()
-        setupAuthorLabel()
         setupDateLabel()
+        setupContentLabel()
         
         detailImageView.load(urlString: article?.urlToImage ?? "")
-        titleLabel.text = article?.title ?? ""
-        authorLabel.text = article?.author ?? ""
-        dateLabel.text = article?.publishedAt ?? ""
+        dateLabel.text = (article?.publishedAt ?? "").changeDateFormat()
+        contentLabel.text = article?.content ?? ""
         
     }
     
@@ -101,30 +99,21 @@ class DetailViewController: UIViewController {
         ])
     }
     
-    func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 8),
-            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
-        ])
-    }
-    
-    func setupAuthorLabel() {
-        contentView.addSubview(authorLabel)
-        NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            authorLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            authorLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
-        ])
-    }
-    
     func setupDateLabel() {
         contentView.addSubview(dateLabel)
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
+            dateLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 8),
             dateLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
             dateLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
+        ])
+    }
+    
+    func setupContentLabel() {
+        contentView.addSubview(contentLabel)
+        NSLayoutConstraint.activate([
+            contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
+            contentLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
+            contentLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
         ])
     }
 }
