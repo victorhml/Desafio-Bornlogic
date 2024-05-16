@@ -11,6 +11,27 @@ class HomeViewController: UIViewController {
 
     let viewModel = HomeViewModel()
     var articles: [ArticleModel]?
+    var categories = ["general", "business", "entertainment", "health", "science", "sports", "technology"]
+    
+    private lazy var loadingView: UIView = {
+        let loadingView = UIView()
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        return loadingView
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: categories)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.addTarget(self, action: #selector(didChangeSegment), for: .valueChanged)
+        return segmentedControl
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -22,13 +43,36 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        setupTableView()
-        // Do any additional setup after loading the view.
-        viewModel.getHomeNews(urlString: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=b1fcfcc3f3e841aebabb50e8cf9cd681") { articles in
-            self.articles = articles
-            self.tableView.reloadData()
-        }
+        didChangeSegment(segmentedControl)
+    }
+    
+//    func select
+    
+    func setupLoading() {
+        segmentedControl.removeFromSuperview()
+        tableView.removeFromSuperview()
+        view.addSubview(loadingView)
+        loadingView.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        NSLayoutConstraint.activate([
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
+        ])
+    }
+    
+    func setupSegmentedControl() {
+        activityIndicator.stopAnimating()
+        loadingView.removeFromSuperview()
+        view.addSubview(segmentedControl)
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: navigationController!.navigationBar.bottomAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
     
     func setupTableView() {
@@ -37,11 +81,25 @@ class HomeViewController: UIViewController {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+//            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    @objc func didChangeSegment(_ sender: UISegmentedControl) {
+        setupLoading()
+        viewModel.getHomeNews(urlString: "https://newsapi.org/v2/top-headlines?category=\(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")&apiKey=b1fcfcc3f3e841aebabb50e8cf9cd681") { articles in
+            self.setupSegmentedControl()
+            self.setupTableView()
+            self.articles = articles
+            self.tableView.reloadData()
+        }
+    }
+    func setupLoadingView() {
+        
     }
 }
 
