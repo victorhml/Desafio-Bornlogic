@@ -12,8 +12,15 @@ class HomeTableViewCell: UITableViewCell {
     lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    lazy var infoView: UIView = {
+        let infoView = UIView()
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        infoView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        return infoView
     }()
     
     lazy var titleLabel: UILabel = {
@@ -44,6 +51,7 @@ class HomeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupNewsImageView()
+        setupInfoView()
         setupTitleLabel()
         setupAuthorLabel()
         setupDescriptionLabel()
@@ -52,11 +60,6 @@ class HomeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -65,42 +68,50 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     
-    func setupNewsImageView() {
+    private func setupNewsImageView() {
         contentView.addSubview(newsImageView)
         NSLayoutConstraint.activate([
-            newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            newsImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            newsImageView.widthAnchor.constraint(equalToConstant: 100),
-            newsImageView.heightAnchor.constraint(equalToConstant: 50),
-            newsImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8)
+            newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            newsImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            newsImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            newsImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
     
-    func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
+    private func setupInfoView() {
+        newsImageView.addSubview(infoView)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.leftAnchor.constraint(equalTo: newsImageView.rightAnchor, constant: 8),
-            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
+            infoView.leftAnchor.constraint(equalTo: newsImageView.leftAnchor),
+            infoView.rightAnchor.constraint(equalTo: newsImageView.rightAnchor),
+            infoView.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor)
+        ])
+    }
+    
+    private func setupTitleLabel() {
+        infoView.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 8),
+            titleLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 8),
+            titleLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -8)
         ])
     }
 
-    func setupAuthorLabel() {
-        contentView.addSubview(authorLabel)
+    private func setupAuthorLabel() {
+        infoView.addSubview(authorLabel)
         NSLayoutConstraint.activate([
             authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            authorLabel.leftAnchor.constraint(equalTo: newsImageView.rightAnchor, constant: 8),
-            authorLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
+            authorLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 8),
+            authorLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -8)
         ])
     }
     
-    func setupDescriptionLabel() {
-        contentView.addSubview(descriptionLabel)
+    private func setupDescriptionLabel() {
+        infoView.addSubview(descriptionLabel)
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leftAnchor.constraint(equalTo: newsImageView.rightAnchor, constant: 8),
-            descriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8)
+            descriptionLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: 8),
+            descriptionLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -8),
+            descriptionLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -8)
         ])
     }
 }

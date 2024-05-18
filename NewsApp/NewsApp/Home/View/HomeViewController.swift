@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     let viewModel = HomeViewModel()
     var articles: [ArticleModel]?
-    var categories = ["general", "business", "entertainment", "health", "science", "sports", "technology"]
+    var categories = ["General", "Business", "Entertainment", "Health", "Science", "Sports", "Technology"]
     
     private lazy var loadingView: UIView = {
         let loadingView = UIView()
@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.style = .medium
         return activityIndicator
     }()
     
@@ -44,12 +45,11 @@ class HomeViewController: UIViewController {
         
         view.backgroundColor = .white
         didChangeSegment(segmentedControl)
+        title = "Notícias"
     }
     
-//    func select
     
-    func setupLoading() {
-        segmentedControl.removeFromSuperview()
+    private func setupLoading() {
         tableView.removeFromSuperview()
         view.addSubview(loadingView)
         loadingView.addSubview(activityIndicator)
@@ -64,64 +64,61 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func setupSegmentedControl() {
+    private func setupSegmentedControl() {
         activityIndicator.stopAnimating()
         loadingView.removeFromSuperview()
         view.addSubview(segmentedControl)
         NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: navigationController!.navigationBar.bottomAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
 //            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
-    @objc func didChangeSegment(_ sender: UISegmentedControl) {
+    @objc private func didChangeSegment(_ sender: UISegmentedControl) {
         setupLoading()
-        viewModel.getHomeNews(urlString: "https://newsapi.org/v2/top-headlines?category=\(sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "")&apiKey=b1fcfcc3f3e841aebabb50e8cf9cd681") { articles in
+        viewModel.getHomeNews(urlString: "https://newsapi.org/v2/top-headlines?category=\(sender.titleForSegment(at: sender.selectedSegmentIndex)?.lowercased() ?? "")&apiKey=b1fcfcc3f3e841aebabb50e8cf9cd681") { articles in
             self.setupSegmentedControl()
             self.setupTableView()
             self.articles = articles
             self.tableView.reloadData()
         }
     }
-    func setupLoadingView() {
-        
-    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.goToDetails(navigationController: self.navigationController ?? UINavigationController(), article: articles![indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 316
+    internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    internal func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
         cell.newsImageView.load(urlString: articles?[indexPath.row].urlToImage ?? "")
         cell.titleLabel.text = articles?[indexPath.row].title ?? ""
@@ -135,7 +132,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension UIImageView {
     func load(urlString: String) {
         guard let url = URL(string: urlString) else {
-            self.image = UIImage(systemName: "questionmark.square")
+            self.image = UIImage(named: "newspaper_background.jpg")
             return
         }
         DispatchQueue.global().async { [weak self] in
