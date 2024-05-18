@@ -6,30 +6,34 @@
 //
 
 import XCTest
+@testable import NewsApp
 
 final class HomeCoordinatorTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var navigationMock = UINavigationControllerMock()
+    
+    var coord: HomeCoordinator?
+    
+    func test_start_coordinator() {
+        coord = HomeCoordinator(navigationController: navigationMock)
+        coord?.start()
+        XCTAssertNotNil(navigationMock.pushedViewController)
+    }
+    
+    func test_go_to_details() {
+        coord = HomeCoordinator(navigationController: self.navigationMock)
+        coord?.goToDetails()
+        XCTAssertNotNil(navigationMock.pushedViewController)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+class UINavigationControllerMock: UINavigationController {
+    
+    var pushedViewController: UIViewController?
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        pushedViewController = viewController
+        super.pushViewController(viewController, animated: animated)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

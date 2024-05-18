@@ -81,7 +81,6 @@ class HomeViewController: UIViewController {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
