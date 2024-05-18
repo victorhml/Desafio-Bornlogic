@@ -34,13 +34,18 @@ class DetailViewController: UIViewController {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
         label.numberOfLines = 0
+        label.textAlignment = .right
         return label
     }()
     
     private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.numberOfLines = 0
         return label
     }()
@@ -87,7 +92,6 @@ class DetailViewController: UIViewController {
             detailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             detailImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             detailImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
-//            detailImageView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     

@@ -10,6 +10,8 @@
 		D4345DBB2BF6C64400E08894 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4345DBA2BF6C64400E08894 /* HomeCoordinatorTests.swift */; };
 		D4345DBE2BF6D34100E08894 /* DetailCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4345DBD2BF6D34100E08894 /* DetailCoordinatorTests.swift */; };
 		D4345DC02BF6D4DF00E08894 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4345DBF2BF6D4DF00E08894 /* HomeViewModelTests.swift */; };
+		D457BC7E2BF83FED003B1E6E /* UIImageView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457BC7D2BF83FEC003B1E6E /* UIImageView+extensions.swift */; };
+		D457BC802BF84016003B1E6E /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457BC7F2BF84016003B1E6E /* String+extensions.swift */; };
 		D4E84B032BF0167B000ABE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B022BF0167B000ABE92 /* AppDelegate.swift */; };
 		D4E84B052BF0167B000ABE92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84B042BF0167B000ABE92 /* SceneDelegate.swift */; };
 		D4E84B0C2BF0167E000ABE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E84B0B2BF0167E000ABE92 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		D4345DBA2BF6C64400E08894 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
 		D4345DBD2BF6D34100E08894 /* DetailCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinatorTests.swift; sourceTree = "<group>"; };
 		D4345DBF2BF6D4DF00E08894 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		D457BC7D2BF83FEC003B1E6E /* UIImageView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extensions.swift"; sourceTree = "<group>"; };
+		D457BC7F2BF84016003B1E6E /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		D4E84AFF2BF0167B000ABE92 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E84B022BF0167B000ABE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4E84B042BF0167B000ABE92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		D457BC7C2BF83FC5003B1E6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D457BC7F2BF84016003B1E6E /* String+extensions.swift */,
+				D457BC7D2BF83FEC003B1E6E /* UIImageView+extensions.swift */,
+			);
+			name = Extensions;
+			path = ../Extensions;
+			sourceTree = "<group>";
+		};
+		D457BC812BF84068003B1E6E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D457BC7C2BF83FC5003B1E6E /* Extensions */,
+			);
+			name = Resources;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		D4E84AF62BF0167B000ABE92 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +205,7 @@
 		D4E84B012BF0167B000ABE92 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				D457BC812BF84068003B1E6E /* Resources */,
 				D4E84B3C2BF01B2D000ABE92 /* Sources */,
 				D4E84B342BF01A92000ABE92 /* Home */,
 				D4E84B352BF01A9E000ABE92 /* Detail */,
@@ -438,7 +462,9 @@
 				D4E84B442BF0272F000ABE92 /* HomeModel.swift in Sources */,
 				D4E84B3E2BF01BAB000ABE92 /* HomeCoordinator.swift in Sources */,
 				D4E84B032BF0167B000ABE92 /* AppDelegate.swift in Sources */,
+				D457BC7E2BF83FED003B1E6E /* UIImageView+extensions.swift in Sources */,
 				D4E84B052BF0167B000ABE92 /* SceneDelegate.swift in Sources */,
+				D457BC802BF84016003B1E6E /* String+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

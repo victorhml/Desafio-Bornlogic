@@ -127,32 +127,3 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
-extension UIImageView {
-    func load(urlString: String) {
-        guard let url = URL(string: urlString) else {
-            self.image = UIImage(named: "newspaper_background.jpg")
-            return
-        }
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
-
-extension String {
-    func changeDateFormat() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        let date = dateFormatter.date(from: self)
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let resultString = dateFormatter.string(from: date!)
-        return resultString
-    }
-}

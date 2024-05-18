@@ -19,32 +19,37 @@ class HomeTableViewCell: UITableViewCell {
     lazy var infoView: UIView = {
         let infoView = UIView()
         infoView.translatesAutoresizingMaskIntoConstraints = false
-        infoView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        infoView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
         return infoView
     }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.tintColor = .black
-        label.font = UIFont(name: "Helvetica-Bold", size: 16)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.numberOfLines = 0
+        label.textAlignment = .justified
         return label
     }()
     
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.tintColor = .black
-        label.numberOfLines = 1
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.numberOfLines = 0
+        label.textAlignment = .justified
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.tintColor = .black
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.numberOfLines = 0
+        label.textAlignment = .justified
         return label
     }()
     
