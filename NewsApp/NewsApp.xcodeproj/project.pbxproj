@@ -102,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				D4345DB52BF6C53600E08894 /* Coordinator */,
-				D4345DB62BF6C53E00E08894 /* View */,
 				D4345DB72BF6C54600E08894 /* ViewModel */,
 			);
 			path = Home;
@@ -112,8 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				D4345DB82BF6C55C00E08894 /* Coordinator */,
-				D4345DB92BF6C56400E08894 /* View */,
-				D4345DC12BF6D50700E08894 /* ViewModel */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -124,13 +121,6 @@
 				D4345DBA2BF6C64400E08894 /* HomeCoordinatorTests.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		D4345DB62BF6C53E00E08894 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D4345DB72BF6C54600E08894 /* ViewModel */ = {
@@ -147,20 +137,6 @@
 				D4345DBD2BF6D34100E08894 /* DetailCoordinatorTests.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		D4345DB92BF6C56400E08894 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D4345DC12BF6D50700E08894 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D457BC7C2BF83FC5003B1E6E /* Extensions */ = {
